@@ -1,0 +1,9 @@
+const config = require('./config');
+
+const dbConfig = {
+    "migrations-path": "migrations",
+    "models-path": "app/models",
+    "url": process.env.DATABASE_URL
+};
+
+module.exports = dbConfig;
