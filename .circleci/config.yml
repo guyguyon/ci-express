@@ -14,8 +14,13 @@ jobs:
       - run:
           name: npm-install
           command: npm install
+      - run: mkdir ~/junit
       - run:
-          name: test
-          command: 'npm test'
+          command: mocha test --reporter mocha-junit-reporter
+          environment:
+            MOCHA_FILE: ~/junit/test-results.xml
+          when: always
       - store_test_results:
-          path: test
+          path: ~/junit
+      - store_artifacts:
+          path: ~/junit          
